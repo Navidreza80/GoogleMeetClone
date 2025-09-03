@@ -1,10 +1,12 @@
 import { useSocket } from "@/context/socket";
 import { cloneDeep } from "lodash";
+import { useRouter } from "next/router";
 
 const { useState } = require("react");
 
-const usePlayer = (myId, roomId) => {
+const usePlayer = (myId, roomId, peer) => {
   const socket = useSocket();
+  const router = useRouter();
   const [players, setPlayers] = useState([]);
   const playersCopy = cloneDeep(players);
 
@@ -12,6 +14,13 @@ const usePlayer = (myId, roomId) => {
   delete playersCopy[myId];
 
   const nonHighlightedPlayers = playersCopy;
+
+  const leaveRoom = () => {
+    socket.emit("user-leave", myId, roomId);
+    console.log("Leaving room", roomId);
+    peer?.disconnect();
+    router.push("/");
+  };
 
   const toggleAudio = () => {
     console.log("I toggled mic");
@@ -41,7 +50,8 @@ const usePlayer = (myId, roomId) => {
     playerHighlighted,
     nonHighlightedPlayers,
     toggleAudio,
-    toggleVideo
+    toggleVideo,
+    leaveRoom,
   };
 };
 
