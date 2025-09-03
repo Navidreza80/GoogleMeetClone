@@ -1,0 +1,95 @@
+.copyContainer {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 10px 0;
+  max-width: 400px;
+  width: auto;
+  display: inline-block;
+}
+
+.roomIdWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.roomLabel {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.roomId {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.copyIcon {
+  color: white;
+}
+
+.copyText {
+  margin-left: 2px;
+}
+
+/* Responsive design for different screen sizes */
+@media (max-width: 768px) {
+  .copyContainer {
+    padding: 6px 10px;
+    max-width: 300px;
+  }
+  
+  .roomIdWrapper {
+    gap: 6px;
+  }
+  
+  .roomId {
+    max-width: 120px;
+    font-size: 11px;
+  }
+  
+  .copyButton {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .copyContainer {
+    max-width: 250px;
+  }
+  
+  .roomId {
+    max-width: 100px;
+  }
+}
